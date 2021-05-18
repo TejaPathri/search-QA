@@ -9,9 +9,12 @@
     font-weight: bold;
   }
   #keyword { display: block; margin: .25em 0 0; width: 100%; padding: .25em .5em; font-size: 1.2em; }
-  a { font-size: 1.5em; }
+  a { font-size: 1.5em; width: 100%; padding: .25em; align-items: center}
+*
+  #button { font-size: 1.5em; }
 * {
     box-sizing: border-box;
+    
   }
 
   h2{
@@ -141,4 +144,10 @@
   #hrefs{
       visibility: hidden;
   }
-  
+  .form-inline button {
+    padding: 10px 20px;
+    background-color: dodgerblue;
+    border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+  }
