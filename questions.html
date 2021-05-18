@@ -1,6 +1,4 @@
 <html>
-    
-
     <head>
         <form>
             <input type="button" value="Home"  onclick="backToHome()">
@@ -15,51 +13,35 @@
     <body>
         <h2 id = "demo"></h2>
         <script>
+			var data = "";
 			const url = " http://localhost:3000/qa/json"; 
 	  
 			async function getData() { 
 				const response = await fetch(url);
 	  
-				const data = await response.json();
+				data = await response.json();
 				console.log(data);
+				filter(data);
 			}
-			getData()
-        <script>
+			getData();
 			function backToHome() {
 				window.history.back();
 			}
-            const urlParams = new URLSearchParams(window.location.search);
-            var myParam = urlParams.get('id');
-			myParam = myParam - 1;
-            // alert(myParam);
-			
-			// we can store questions and answers in JSON format as we can fetch them using a unique id that is coming from query params in URL.
-			
-            var text = '{"myJson":[' +
-					'{"question":"If BR Definition Contain \\\"SendEntityForGraphProcessing\\\" keyword and the trigger point is on create, then will my BR will get execute after all the computation BRs get executed on create irrespective of execution order ?","answer":"Yes it will execute the“SendEntityForGraphProcessing” BR once all the Computation BR’s get executed on create though the execution order of Graph BR is less than any other BR’s which runs on create.The order of execution goes as follow 1st Computation Rules will get execute. 2nd Validation & Computation Rules will get execute. 3rd Validation Post-process Rules will get execute.","id":1 },' +
-					'{"question":"How can we avoid costly calls of checking “IsEntityInWorkflow“ ?","answer":" We can set up some internal system attribute at the entry and exit of the workflow as true and false. Use the same attribute to check for its true and false value instead of checking for “IsEntityInWorkflow“. OR Map the business rule to activity entry so that also would avoid using the keyword. OR Make use of Global Variable as a flag. ","id":2 },' +
-					'{"question":"If i am in sku then may  i know which all skus are my siblings?","answer":"Yes. From the current sku, go to its product. from that product get all the related sku ids and store in a variable. Take that variable’s value and update in the current sku from where you want to know about its siblings.","id":3 },'+
-					'{"question":"Can we set thumbnail id in sku if we dont have any image relationship in sku but we have in its product?","answer":"Yes, Get the thumbanil id of a product and update that id into its related sku into some attribute or global variable Take that global variable or sku’s attribute value which is having thumbnail id of product and use “SetEntityProperty” keyword and pass the thumbanil id of product in that.","id":4 },'+
-					'{"question":"What are the different outcomes of using “ValidateEmptyAttributes“, “IsNullOrEmpty“ and GetAttributeValue[] <>””. ?","answer":"Always, remember “ValidateEmptyAttributes“ is a costlier call than “IsNullOrEmpty“. Please visit this link to have a clear understanding","id":5 },'+
-					'{"question":"How to check for empty value of the attribute set in the above postprocess rule type?","answer":"Use GetAttributeValue[]<>”” to check for its non-empty attribute value.","id":6 },'+
-					'{"question":"How can we restrict two update workflows to trigger only one at a time?","answer":"Have a check on the exit of the one workflow i.e.  have a system attribute setting IsWorkflowCompleted? attrbute value to true and false respectively. Use this attribute value check in another workflows BR for its true and false value and trigger the workflow respectively.","id":7 },'+
-					'{"question":"How to check for HaveRelationshipChanged from WhereUsed side of relationship?","answer":"Keep a system attribute which should have a relationship count in that entity by using “RelationshipsCountInContext“ keyword. And next time, check for the system attribute value change as a trigger to check for is the relationship have been changed or not? Increase or Decrease in count will give the trigger","id":8 },'+
-					'{"question":"When I am trying to copy the attribute values from one nested child attribute to another nested child attribute, I am not able to do so.","answer":"Make sure that the \\\"AddNestedAttributeRow\\\" keyword is correctly used according to the syntax.","id":9 },'+
-					'{"question":"How to use two keywords in a same business rule? Is there any separator for usage of that?","answer":"Yes, The keywords are separated by AND operator.","id":10 },'+
-					'{"question":"How to declare a variable in my rule?","answer":"The declaration of variable  can be done as: varInitializeCount:=0; varContExecFlag:=false;","id":11 },'+
-					'{"question":"What will happen if i end up giving semi colon at the end of my keywords definition?","answer":"Semi colons states that its the end of the statement for any line or declaration. If we end up writing semi colon, our definitions after the the semi colon will not get executed.","id":12 },'+
-					'{"question":"Which rule type says the best practice to keep the Graph Process related BR ?","answer":"Graph process is a costly operation. Hence, we dont want to call the graph process on every single update done by System manage call. Its recommended to keep Graph related BRs into Computation Post Process.","id":13 },'+
-					'{"question":"How to clear an attribute value through BR?","answer":"DeleteAttribute[\\\"_DEFAULT\\\",\\\"_DEFAULT\\\",\\\"attributename\\\"] Note: This keyword is supported only for Computation rule type.","id":14 },'+
-					'{"question":"I am continuously getting errors in my notifications area. It says product is having errors but that product itself doesn’t exist. What can be wrong here?","answer":"This may happen when you don’t have proper check on your relationship from your source entity and you want to set some attribute value in the target entity which doesn’t even exist. ","id":15 },'+
-					'{"question":"Which rule types states the best practices to keep workflow related BRs?","answer":"Keeping workflow related BRs in Validation Post process is freasible to achieve the use case.","id":16 },'+
-					'{"question":"Addition/Extension of context is create or update event?","answer":"Create Event.","id":17 },'+
-					'{"question":"Default values doesn’t populate if context is added by BR. What is the reason ?","answer":"On Demand the context gets added by BR. Hence system dosen’t know whether to overvide the value, so it will not populate the default values for context.","id":18 },'+
-					'{"question":"I am not able to set an attribute value in my related product in the same context from sku when i am mapping my BR at context level. I am using SetEntityAttributeValue[ ] keyword to do so.","answer":"Using “SetEntityAttributeValue[ ]” keyword will always set the values in self context irrespective of the BR mapped to self or context level. When your use case says to set the value in product at the same context where the sku is there, please use “SetEntityAttributeValueForContext[ ]” and pass the current context in context parameter. ","id":19 },'+
-					'{"question":"Can We Delete Specific Rows in a Nested Attribute or Do we Need to Delete the Entire Attribute and Repopulate It, Even if it  has a combination of Br populated Rows and User Defined Rows?","answer":" Currently we have no Support to Remove Specific Rows of a Nested Attribute and the only solution i see is to delete the Entire Attribute and Fire the BR Again to Add New Rows but User Entered Rows will Be Lost or will need to be re-entered.","id":20 }]}';
+			function filter(obj) {
 
-
-            obj = JSON.parse(text);
-            document.getElementById("demo").innerHTML = "Question: "+"<br>"+obj.myJson[myParam].question +"<br>"+ "Answer: "+"<br>" + obj.myJson[myParam].answer;
+				const urlParams = new URLSearchParams(window.location.search);
+				var myParam = urlParams.get('id');
+				console.log(myParam);
+				console.log(obj);
+				for(i in obj) {
+					
+					if (myParam == obj[i]._id) {
+						console.log(obj[i]);
+						document.getElementById("demo").innerHTML = "Question: "+"<br>"+obj[i].question +"<br>"+ "Answer: "+"<br>" + obj[i].answer;
+					}
+				}
+			}
+            
         </script>
     </body>
 </html>

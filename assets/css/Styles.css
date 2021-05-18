@@ -1,3 +1,15 @@
+#search-box {
+  position: relative;
+  align-content: center;
+  width: 75%;
+  margin: 0;
+  }
+  h2 {
+    text-align: center;
+    font-weight: bold;
+  }
+  #keyword { display: block; margin: .25em 0 0; width: 100%; padding: .25em .5em; font-size: 1.2em; }
+  a { font-size: 1.5em; }
 * {
     box-sizing: border-box;
   }
