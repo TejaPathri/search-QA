@@ -13,6 +13,9 @@
     <body>
         <h2 id = "demo"></h2>
         <script>
+			function backToHome() {
+				window.history.back();
+			}
 			var data = "";
 			const url = " http://localhost:3000/qa/json"; 
 	  
@@ -24,9 +27,7 @@
 				filter(data);
 			}
 			getData();
-			function backToHome() {
-				window.history.back();
-			}
+			
 			function filter(obj) {
 
 				const urlParams = new URLSearchParams(window.location.search);

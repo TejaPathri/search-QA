@@ -1,7 +1,15 @@
+#head {
+  margin: auto;
+  width: 130%;
+  padding: 10px;
+}
+#headButton {
+  position: relative;
+}
 #search-box {
   position: relative;
   align-content: center;
-  width: 75%;
+  width: 140%;
   margin: 0;
   }
   h2 {
