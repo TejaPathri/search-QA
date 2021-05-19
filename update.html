@@ -63,17 +63,18 @@
 
           var arr = val.split(" ");
           ques = [];
+          console.log("66", ques.length);
           for (let j = 0; j < arr.length; j++) {
             for (var i = 1; i < opts.length; i++) {
               if (opts[i].question.toLowerCase().indexOf(arr[j].toLowerCase()) >= 0 && ques.indexOf(opts[i].question) == -1) {
-                // opts[i].question = opts[i].question.toLowerCase();
-                // var ind = opts[i].question.indexOf(arr[j]);
-                // console.log(ind, arr[j]);
-                // var l = ind + arr[j].length;
-                // var end = opts[i].question.length;
-                // console.log("end", l);
-                // var res = opts[i].question.substring(0, ind) +'<mark>'+opts[i].question.substring(ind, l)+' </mark>'+opts[i].question.substring(l, end);
-                // opts[i].question = res;
+                opts[i].question = opts[i].question.toLowerCase();
+                var ind = opts[i].question.indexOf(arr[j]);
+                console.log(ind, arr[j]);
+                var l = ind + arr[j].length;
+                var end = opts[i].question.length;
+                console.log("end", l);
+                var res = opts[i].question.substring(0, ind) +'<mark>'+opts[i].question.substring(ind, l)+' </mark>'+opts[i].question.substring(l, end);
+                opts[i].question = res;
                 // opts[i].question = opts[i].question.toUpperCase();
                 ques.push(opts[i]);
               }
