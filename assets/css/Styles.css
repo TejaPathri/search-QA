@@ -59,7 +59,10 @@
     color: #fff;
     cursor: pointer;
   }
-  
+  mark {
+    background-color: green;
+    color: black;
+  }
   .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
@@ -96,6 +99,20 @@
   .autocomplete-active {
     background-color: DodgerBlue !important; 
     color: #ffffff; 
+  }
+  .header {
+  /* background-color: rgb(170, 213, 241); */
+  border-style: solid;
+  padding: 20px;
+  text-align: center;
+  }
+  .footer {
+    margin-top: 10px;
+    border:
+    border-style: solid;
+    /* background-color: sky; */
+    padding: 20px;
+    text-align: center;
   }
   .dropbtn {
     background-color: #04AA6D;

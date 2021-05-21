@@ -1,17 +1,53 @@
 <html>
     <head>
         <form>
-            <input type="button" value="Home"  onclick="backToHome()">
+            <input type="button" value="Home" id="btn" onclick="backToHome()">
            </form>
 		   <style>
+		   	   #btn {
+					background-color: rgb(170, 213, 241);
+					border: none;
+					color: black;
+					font-weight: bold;
+					padding: 15px 32px;
+					text-align: center;
+					text-decoration: none;
+					display: inline-block;
+					font-size: 16px;
+				  }
 			   h2{
 				font-size: 1.5em;
 				font-weight: lighter;
 			   }
+			   h3{
+				font-size: 1.5em;
+				font-weight: lighter;
+			   }
+			   #block{
+				   margin: auto;
+					width: 70%;
+					border: 3px solid blue;
+					padding: 10px;
+				   
+			   }
+			   #question {
+				   color: #5777ba;
+				   font-weight: bold;
+			   }
 		   </style>
     </head>
     <body>
-        <h2 id = "demo"></h2>
+		<div>
+		<h2 id="question">Question</h2>
+		<h2 id = "demo" style = " color:#5777ba"></h2>
+		</div>
+		<hr>
+		<div>
+		<h2 id="question" >Answer</h2>
+        <h3 id = "ans" style = " color:#5777ba"></h3>
+		</div>
+	
+	
         <script>
 			function backToHome() {
 				window.history.back();
@@ -37,7 +73,8 @@
 					
 					if (myParam == obj[i]._id) {
 						console.log(obj[i]);
-						document.getElementById("demo").innerHTML = "Question: "+"<br>"+obj[i].question +"<br>"+ "Answer: "+"<br>" + obj[i].answer;
+						document.getElementById("demo").innerHTML = obj[i].question +"<br>";
+						document.getElementById("ans").innerHTML = obj[i].answer;
 					}
 				}
 			}

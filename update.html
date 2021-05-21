@@ -42,7 +42,7 @@
             <div class="col-md-12 mt-4">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">Search the Knowledge Base</h2>
+                        <h2 class="card-title" style = " color:#5777ba;font-weight: bold">Search the Knowledge Base</h2>
                     </div>
                 </div>
             </div>
@@ -73,13 +73,15 @@
           var arr = val.split(" ");
           ques = [];
           for (let j = 0; j < arr.length; j++) {
+            
             for (var i = 1; i < obj.length; i++) {
-              if (obj[i].question.toLowerCase().indexOf(arr[j].toLowerCase()) >= 0 && ques.indexOf(obj[i].question) == -1) {
+              arr[j] = arr[j].toLowerCase();
+              if (obj[i].question.toLowerCase().indexOf(arr[j]) >= 0 && ques.indexOf(obj[i].question) == -1) {
                 obj[i].question = obj[i].question.toLowerCase();
                 var ind = obj[i].question.indexOf(arr[j]);
                 var l = ind + arr[j].length;
                 var end = obj[i].question.length;
-                var res = obj[i].question.substring(0, ind) +'<mark>'+obj[i].question.substring(ind, l)+' </mark>'+obj[i].question.substring(l, end);
+                var res = obj[i].question.substring(0, ind) +'<mark>'+obj[i].question.substring(ind, l)+'</mark>'+obj[i].question.substring(l, end);
                 obj[i].question = res;
                 if (obj[i].answer != "") {
                   ques.push(obj[i]);
