@@ -63,10 +63,8 @@
 
 	    async function onInput(){
         var val = document.getElementById("keyword").value.trim();
-        console.log("value", val);
         await getData();
         var obj = data;
-        console.log(obj);
         if (val == "") {
           document.getElementById("languages").innerHTML = val;
         }
@@ -76,14 +74,12 @@
           ques = [];
           for (let j = 0; j < arr.length; j++) {
             for (var i = 1; i < obj.length; i++) {
-              console.log(obj[i].question);
               if (obj[i].question.toLowerCase().indexOf(arr[j].toLowerCase()) >= 0 && ques.indexOf(obj[i].question) == -1) {
                 obj[i].question = obj[i].question.toLowerCase();
                 var ind = obj[i].question.indexOf(arr[j]);
                 var l = ind + arr[j].length;
                 var end = obj[i].question.length;
                 var res = obj[i].question.substring(0, ind) +'<mark>'+obj[i].question.substring(ind, l)+' </mark>'+obj[i].question.substring(l, end);
-                console.log(res);
                 obj[i].question = res;
                 if (obj[i].answer != "") {
                   ques.push(obj[i]);
