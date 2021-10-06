@@ -15,8 +15,22 @@
   h2 {
     text-align: center;
     font-weight: bold;
+    font-family: Lato,sans-serif;
   }
-  #keyword { display: block; margin: .25em 0 0; width: 100%; padding: .25em .5em; font-size: 1.2em; }
+  #keyword { 
+    font-family: Lato,sans-serif;
+    margin-right: auto;
+    margin-left: auto;
+    margin: 0 auto;
+    display: block;
+    margin: .25em 0 0;
+    width: 70%;
+    outline: none;
+    border-radius: 25px;
+    /* padding: .25em .5em; */
+    font-size: 1.5em;
+    font-weight: lighter;
+  }
   a { font-size: 1.5em; width: 100%; padding: .25em; align-items: center}
 *
   #button { font-size: 1.5em; }
@@ -60,7 +74,7 @@
     cursor: pointer;
   }
   mark {
-    background-color: green;
+    background-color: yellow;
     color: black;
   }
   .autocomplete-items {
@@ -175,4 +189,38 @@
     border: 1px solid #ddd;
     color: white;
     cursor: pointer;
+  }
+  #divId {
+    /* content-align: center; */
+    margin: auto;
+    width: auto;
+    /* border: 3px solid green; */
+    padding: 10px;
+
+  }
+  #languages {
+    font-family: Lato,sans-serif;
+    text-align : left;
+    width: 70%;
+  }
+  #searchBase {
+    color:#5777ba;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: Lato,sans-serif;
+  }
+  #submitBtn {
+    background-color: #5777ba;
+    color:white;
+  }
+  #submitQues {
+    font-family: Lato,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  #PopUp {
+    background-color: #5777ba;
+    font-weight: bold;
+    font-size: 32px;
+    font-family: Lato,sans-serif;
   }

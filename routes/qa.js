@@ -1,16 +1,30 @@
+const { response } = require('express');
 const express = require('express');
 // var cors = require('cors')
 // const { response } = require('../app');
 var router = express.Router();
 var QA = require("../models/table");
 /* GET users listing. */
+//get 1 -- question = "xyz", answer = ""
 
+// router.put('/updateAnswer/:question', async function(req, res, next){
+//   var addAns = await QA.find({question: req.params.question});
+//   addAns[0].answer = req.body.answer;
+//   addAns[0].save();
+//   console.log(addAns);
 
-router.get('/', function(req, res, next) {
+//   res.send(addAns);
+// });
 
-  // console.log("get")
-  res.send('respond with a resource');
-});
+// router.get('/:param', async function(req, res, next) {
+//   var addAns = await QA.find({question: req.params.param});
+//   console.log(addAns);
+
+//   // addAns[0].answer = "topper";
+//   // await addAns[0].save();
+//   // console.log("get");
+//   res.send(addAns[0]);
+// });
 router.post('/addQuestionWithAnswer', async function(req, res, next) {
   console.log("entered");
   const qa = new QA({
